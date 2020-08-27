@@ -7,19 +7,19 @@ object FunctionApp {
     println(minus(b=1,a=3))
     println(minus())
     println(minus(b=5))
-    for(i <- 1 to 10){
+    for(i <- 1 to 10){//1...10
       println(i)
     }
-    for(i <- 1 until 10){
+    for(i <- 1 until 10){//1...9
       println(i)
     }
-    for(i <- Range(1,10)){
+    for(i <- Range(1,10)){//1...9
       println(i)
     }
-    for(i <- Range.inclusive(1,10)){
+    for(i <- Range.inclusive(1,10)){//1...10
       println(i)
     }
-    for(i <- Range(1,10) if i % 2 == 0){
+    for(i <- Range(1,10) if i % 2 == 0){//2,4,6...8
       println(i)
     }
     Range(1,10).foreach(i=>{
