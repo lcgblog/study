@@ -1,6 +1,6 @@
-package jvm.classloader.passiveuse;
+package jvm.classloader.classinitialize;
 
-import jvm.classloader.passiveuse.testclass.PassiveUser;
+import jvm.classloader.classinitialize.testclass.PassiveUser;
 
 public class PassiveUseClass {
     public static void main(String[] args) {

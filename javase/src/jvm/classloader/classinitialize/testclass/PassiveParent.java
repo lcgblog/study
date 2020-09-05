@@ -1,4 +1,4 @@
-package jvm.classloader.passiveuse.testclass;
+package jvm.classloader.classinitialize.testclass;
 
 public class PassiveParent {
     public static int b = 1;
