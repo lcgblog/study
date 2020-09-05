@@ -5,4 +5,8 @@ public class PassiveParent {
     static{
         System.out.println("PassiveParent: I am invoked!");
     }
+
+    public static void testParent(){
+
+    }
 }
