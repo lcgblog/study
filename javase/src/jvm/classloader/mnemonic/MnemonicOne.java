@@ -1,6 +1,9 @@
 package jvm.classloader.mnemonic;
 
 public class MnemonicOne {
+
+     static int test2 = 1;
+
     public static void main(String[] args) {
         System.out.println(Child.a);
         System.out.println(Child.b);
@@ -18,6 +21,7 @@ public class MnemonicOne {
         System.out.println(Child.m);
         System.out.println(Child.m2);
         System.out.println(Child.test1);
+        System.out.println(test2);
     }
 }
 
