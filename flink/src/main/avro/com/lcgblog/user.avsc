@@ -1,0 +1,30 @@
+{"namespace": "com.lcgblog",
+  "type": "record",
+  "name": "User",
+  "fields": [
+    {"name": "name", "type": "string"},
+    {"name": "favorite_number",  "type": ["int", "null"]},
+    {"name": "favorite_color", "type": ["string", "null"]},
+    {
+      "name": "gender",
+      "type": [{
+        "namespace": "com.lcgblog",
+        "type": "enum",
+        "name": "Gender",
+        "symbols" : ["MALE","FEMALE","NONE"],
+        "default": "NONE"
+      }],
+      "default": "NONE"
+    },
+    {
+      "name": "age",
+      "type": ["null","string"],
+      "default": null
+    },
+    {
+      "name": "age2",
+      "type": ["null","int"],
+      "default": null
+    }
+  ]
+}
