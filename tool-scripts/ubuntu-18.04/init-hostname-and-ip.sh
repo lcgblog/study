@@ -105,15 +105,10 @@ check_yes_no() {
   done
 }
 
-read -p "是否将${$ipaddr//./-}作为hostname?请确认[y|n]:" yn
+read -p "请手动输入hostname: " hname
+read -p '确认以"'${hname}'"为hostname [y|n]:' yn
 if [[ ${yn} == [Yy] ]]; then
-  hostnamectl set-hostname ${$ipaddr//./-}
-else
-  read -p "请手动输入hostname: " hname
-  read -p '确认以"'${hname}'"为hostname [y|n]:' yn
-  if [[ ${yn} == [Yy] ]]; then
-    hostnamectl set-hostname ${hname}
-  fi
+  hostnamectl set-hostname ${hname}
 fi
 
 if check_yes_no "是否开始设置本机静态IP? [Y/n] "; then
