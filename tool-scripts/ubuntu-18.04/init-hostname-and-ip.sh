@@ -6,7 +6,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 ipreg="((2(5[0-5]|[0-4][0-9]))|[0-1]?[0-9]{1,2})(\.((2(5[0-5]|[0-4][0-9]))|[0-1]?[0-9]{1,2})){3}"
-destfile=/etc/netplan/50-cloud-init.yaml
+destfile=/etc/netplan/$(ls /etc/netplan/)
 echo "-----"
 echo 请按提示输入，如不做改变，请直接回车。
 echo 设置完毕后，请再次确认配置，按Y开始修改。
