@@ -1,0 +1,10 @@
+<configuration>
+
+  <dataSource>
+    <property name="driverClass" value="com.mysql.cj.jdbc.Driver" />
+    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/lcg_mybatis?characterEncoding=utf-8&serverTimezone=UTC" />
+    <property name="username" value="root" />
+    <property name="password" value="root" />
+  </dataSource>
+
+</configuration>

@@ -1,0 +1,7 @@
+<mymapper namespace="user">
+
+  <select id="selectList">
+    select * from user
+  </select>
+
+</mymapper>
