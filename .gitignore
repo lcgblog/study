@@ -29,3 +29,5 @@ hs_err_pid*
 /springboot/.gradle/
 
 .gradle
+
+./Ignite/work
