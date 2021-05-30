@@ -1,5 +1,6 @@
 package com.lcgblog.study.ignite;
 
+import com.lcgblog.study.ignite.lifecycle.MyLifecycleBean;
 import java.util.Collections;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
@@ -23,6 +24,7 @@ public class QuickStart {
     // The node will be started as a client node.
     cfg.setClientMode(true);
     cfg.setGridLogger(log);
+    cfg.setLifecycleBeans(new MyLifecycleBean());
 
     // Classes of custom Java logic will be transferred over the wire from this app.
     cfg.setPeerClassLoadingEnabled(true);
