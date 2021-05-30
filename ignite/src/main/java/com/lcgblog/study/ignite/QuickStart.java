@@ -3,22 +3,26 @@ package com.lcgblog.study.ignite;
 import java.util.Collections;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
-import org.apache.ignite.IgniteException;
+import org.apache.ignite.IgniteLogger;
 import org.apache.ignite.Ignition;
 import org.apache.ignite.configuration.IgniteConfiguration;
 import org.apache.ignite.lang.IgniteRunnable;
+import org.apache.ignite.logger.log4j2.Log4J2Logger;
 import org.apache.ignite.resources.IgniteInstanceResource;
 import org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi;
 import org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder;
 
 public class QuickStart {
-  public static void main(String[] args) throws IgniteException {
+  public static void main(String[] args) throws Exception {
 
     // Preparing IgniteConfiguration using Java APIs
     IgniteConfiguration cfg = new IgniteConfiguration();
 
+    IgniteLogger log = new Log4J2Logger("ignite-log4j2.xml");
+
     // The node will be started as a client node.
     cfg.setClientMode(true);
+    cfg.setGridLogger(log);
 
     // Classes of custom Java logic will be transferred over the wire from this app.
     cfg.setPeerClassLoadingEnabled(true);

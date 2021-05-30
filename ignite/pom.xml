@@ -25,6 +25,11 @@
       <artifactId>ignite-spring</artifactId>
       <version>${ignite.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.ignite</groupId>
+      <artifactId>ignite-log4j2</artifactId>
+      <version>${ignite.version}</version>
+    </dependency>
   </dependencies>
 
 </project>
