@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: usage_message
+  rabbitmq:
+    host: k8s-node03
+    port: 32140
+    username: guest
+    password: guest
+
+logging:
+  level:
+    org: ERROR
+
+tutorial:
+  client:
+    duration: 10000
