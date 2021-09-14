@@ -3,10 +3,8 @@ package com.lcgblog.study.spring.ioc.overview.container;
 import com.lcgblog.study.spring.ioc.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
@@ -18,8 +16,9 @@ public class IocContainerDemo2 {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         applicationContext.register(IocContainerDemo2.class);//register a bean
-        applicationContext.refresh();
+        applicationContext.refresh();//start up container
         lookupCollectionByType(applicationContext, User.class);
+        applicationContext.close();//stop container
     }
 
     @Bean
