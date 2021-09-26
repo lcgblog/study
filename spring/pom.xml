@@ -11,6 +11,7 @@
 
     <modules>
         <module>ioc-container-overview</module>
+        <module>ioc-container-bean</module>
     </modules>
 
     <properties>
