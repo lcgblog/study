@@ -14,7 +14,6 @@ import javax.annotation.PostConstruct;
 public class BeanInitializationDemo1 implements InitializingBean {
 
     public static void main(String[] args) {
-        //TODO 20210927
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         BeanDefinitionRegistry registry = (BeanDefinitionRegistry)applicationContext.getBeanFactory();
         BeanDefinitionReaderUtils.registerWithGeneratedName(BeanDefinitionBuilder
