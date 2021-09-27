@@ -1,4 +1,4 @@
-package com.lcgblog.study.spring.iocontainerbean;
+package com.lcgblog.study.spring.iocontainerbean.a0926;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean factory-method="createUser" factory-bean="UserFactoryBean" />
+
+    <bean id="UserFactoryBean" class="com.lcgblog.study.spring.iocontainerbean.a0927.BeanInitiationDemo1.UserFactoryBean" />
+
+    <bean id="User2" class="com.lcgblog.study.spring.iocontainerbean.a0927.BeanInitiationDemo1.UserFactoryBean2" factory-method="createUser"/>
+
+    <bean id="UserObjectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+        <property name="targetBeanName" value="User2"/>
+    </bean>
+
+    <bean id="User3" class="com.lcgblog.study.spring.iocontainerbean.a0927.BeanInitiationDemo1.User2ObjectFactory" />
+
+    <bean id="UserServiceLoader" class="org.springframework.beans.factory.serviceloader.ServiceLoaderFactoryBean">
+        <property name="serviceType" value="com.lcgblog.study.spring.iocontainerbean.a0927.serviceloader.UserFactory" />
+    </bean>
+</beans>

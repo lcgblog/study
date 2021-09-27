@@ -1,4 +1,4 @@
-package com.lcgblog.study.spring.iocontainerbean;
+package com.lcgblog.study.spring.iocontainerbean.a0926;
 
 import com.lcgblog.study.spring.ioc.overview.domain.User;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
