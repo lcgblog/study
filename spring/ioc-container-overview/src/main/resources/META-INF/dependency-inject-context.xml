@@ -4,16 +4,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- reuse the lookup context-->
-    <import resource="dependency-lookup-context.xml" />
+    <bean id="user" class="com.lcgblog.study.spring.ioc.overview.domain.User">
+        <property name="id" value="1"/>
+        <property name="name" value="张三" />
+        <property name="like" ref="like" />
+    </bean>
 
-    <bean id="userRepository" class="com.lcgblog.study.spring.ioc.overview.repository.UserRepository"
-          autowire="byType">
-<!--        <property name="users">-->
-<!--            <list>-->
-<!--                <ref bean="user" />-->
-<!--                <ref bean="superUser" />-->
-<!--            </list>-->
-<!--        </property>-->
+    <bean id="like" class="com.lcgblog.study.spring.ioc.overview.domain.Like">
+        <property name="like" value="Orange" />
     </bean>
 </beans>
