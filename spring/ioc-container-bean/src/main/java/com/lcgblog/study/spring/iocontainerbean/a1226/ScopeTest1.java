@@ -15,7 +15,7 @@ public class ScopeTest1 {
         //拿两次 => singleton => true
         System.out.println(applicationContext.getBean("box1") == applicationContext.getBean("box1"));
         System.out.println("第二次实验");
-        //prototype => true
+        //prototype => false
         System.out.println(applicationContext.getBean("box2") == applicationContext.getBean("box2"));
         applicationContext.close();//prototype方式创建的bean不会执行销毁方法
         System.out.println("容器销毁");
