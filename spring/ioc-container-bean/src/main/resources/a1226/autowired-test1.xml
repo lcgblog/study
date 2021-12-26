@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.lcgblog.study.spring.ioc.overview.domain.User" autowire="byType">
+        <property name="name" value="zs" />
+        <property name="id" value="1" />
+    </bean>
+
+    <bean id="like1" class="com.lcgblog.study.spring.ioc.overview.domain.Like">
+        <property name="like" value="Orange" />
+    </bean>
+    <bean id="like2" class="com.lcgblog.study.spring.ioc.overview.domain.Like" autowire-candidate="false">
+        <property name="like" value="Banana" />
+    </bean>
+</beans>
