@@ -30,6 +30,11 @@ public class User {
         this.like = like;
     }
 
+    public User(){
+        System.out.println("User is constructed.");
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
