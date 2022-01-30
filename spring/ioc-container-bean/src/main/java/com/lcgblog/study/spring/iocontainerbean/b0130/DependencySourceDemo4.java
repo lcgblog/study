@@ -1,8 +1,6 @@
-package com.lcgblog.study.spring.iocontainerbean.b0126;
+package com.lcgblog.study.spring.iocontainerbean.b0130;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;

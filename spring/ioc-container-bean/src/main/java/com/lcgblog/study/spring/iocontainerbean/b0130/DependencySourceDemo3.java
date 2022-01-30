@@ -1,4 +1,4 @@
-package com.lcgblog.study.spring.iocontainerbean.b0126;
+package com.lcgblog.study.spring.iocontainerbean.b0130;
 
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class DependencySourceDemo3 {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext();
-        ((DefaultListableBeanFactory)applicationContext.getBeanFactory())
+        applicationContext.getBeanFactory()
                 .registerResolvableDependency(String.class,"hello2");
         applicationContext.register(DependencySourceDemo3.class);
         applicationContext.refresh();

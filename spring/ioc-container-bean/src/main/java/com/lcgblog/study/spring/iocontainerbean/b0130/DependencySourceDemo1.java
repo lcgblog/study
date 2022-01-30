@@ -1,11 +1,8 @@
-package com.lcgblog.study.spring.iocontainerbean.b0126;
+package com.lcgblog.study.spring.iocontainerbean.b0130;
 
 import com.lcgblog.study.spring.ioc.overview.domain.User;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
-import org.springframework.beans.factory.support.BeanDefinitionReaderUtils;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Arrays;
