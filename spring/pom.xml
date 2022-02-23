@@ -12,6 +12,7 @@
     <modules>
         <module>ioc-container-overview</module>
         <module>ioc-container-bean</module>
+        <module>ioc-container-lifecycle</module>
     </modules>
 
     <properties>
