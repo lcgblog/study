@@ -8,6 +8,15 @@ public class User {
     private String name;
     private List<String> list;
 
+    public User() {
+    }
+
+    public User(Long id, String name, List<String> list) {
+        this.id = id;
+        this.name = name;
+        this.list = list;
+    }
+
     public Long getId() {
         return id;
     }
