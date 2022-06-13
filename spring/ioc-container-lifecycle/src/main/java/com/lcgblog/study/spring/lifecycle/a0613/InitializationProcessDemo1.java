@@ -2,6 +2,7 @@ package com.lcgblog.study.spring.lifecycle.a0613;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
  * 初始化方式分为：注解方式，接口方法方式，BeanDefinition方式
  * 初始化完成：org.springframework.beans.factory.config.ConfigurableListableBeanFactory#preInstantiateSingletons()
  *  该方法会把所有BD getBean一遍,容器启动后最后一件事就是这个，确保所有bean都初始化完成
+ *  回调接口：org.springframework.beans.factory.SmartInitializingSingleton#afterSingletonsInstantiated()
  */
 public class InitializationProcessDemo1 {
 
@@ -50,11 +52,11 @@ public class InitializationProcessDemo1 {
         System.out.println("Registered bean");
         //完成初始化
         beanFactory.preInstantiateSingletons();
-        System.out.println("初始化完成.");
+        System.out.println("初始化结束.");
         System.out.println("最终版本：" + beanFactory.getBean("testBean"));
     }
 
-    private static class TestBean implements InitializingBean {
+    private static class TestBean implements InitializingBean, SmartInitializingSingleton {
         private String name;
 
         public String getName() {
@@ -73,10 +75,16 @@ public class InitializationProcessDemo1 {
         }
 
         @Override
-        public void afterPropertiesSet() throws Exception {
+        public void afterPropertiesSet() {
             //初始化
             System.out.println("初始化 -> " + this);
             this.name = "Tom_V3";
+        }
+
+        @Override
+        public void afterSingletonsInstantiated() {
+            System.out.println("初始化完成 -> " + this);
+            this.name = "Tom_V5";
         }
     }
 }
