@@ -26,6 +26,8 @@ public class InstantiationPostProcessDemo2 {
         System.out.println(beanFactory.getBean("user"));
         beanFactory.addBeanPostProcessor(new InstantiationAwareBeanPostProcessor() {
             //返回空表示不做任何处理，返回值不为空则将覆盖原来的PV
+            //@Autowire 就是通过该接口实现的注入
+            //org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties
             @Override
             public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
                 final MutablePropertyValues mpv = new MutablePropertyValues(pvs);

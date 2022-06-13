@@ -1,11 +1,18 @@
-package com.lcgblog.study.spring.lifecycle.a0613;
+package com.lcgblog.study.spring.lifecycle.a0330;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.MutablePropertyValues;
+import org.springframework.beans.PropertyValues;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 
 /**
- * autowire模式下类型注入的优先级要比Name更高
+ * 验证在属性赋之前回调操作之前，
+ * 即InstantiationAwareBeanPostProcessor#postProcessProperties
+ * 会进行属性注入，根据AutowireMode决定
  */
 public class AutowireAfterInstantiationDemo {
     public static void main(String[] args) {
@@ -18,10 +25,23 @@ public class AutowireAfterInstantiationDemo {
                 .setPrimary(true)
                 .getBeanDefinition();
         BeanDefinition bd3 = BeanDefinitionBuilder.genericBeanDefinition(TestBeanHolder.class)
-                .addAutowiredProperty("test")
+                .setAutowireMode(AutowireCapableBeanFactory.AUTOWIRE_BY_NAME)//V1
+//                .setAutowireMode(AutowireCapableBeanFactory.AUTOWIRE_BY_TYPE)//V2
                 .setPrimary(true)
                 .getBeanDefinition();
-
+        beanFactory.addBeanPostProcessor(new InstantiationAwareBeanPostProcessor() {
+            @Override
+            public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
+                if(beanName.equals("test3")){
+                    System.out.println("属性赋值前回调执行前->"+pvs.getPropertyValue("test").getValue());
+                    final MutablePropertyValues mpv = new MutablePropertyValues(pvs);
+                    mpv.removePropertyValue("test");
+                    mpv.addPropertyValue("test", beanFactory.getBean("test2"));
+                    return mpv;
+                }
+                return pvs;
+            }
+        });
         beanFactory.registerBeanDefinition("test", bd1);
         beanFactory.registerBeanDefinition("test2", bd2);
         beanFactory.registerBeanDefinition("test3", bd3);
