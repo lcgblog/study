@@ -13,12 +13,13 @@
         <module>ioc-container-overview</module>
         <module>ioc-container-bean</module>
         <module>ioc-container-lifecycle</module>
+        <module>source-code-hunter</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <spring.version>5.2.2.RELEASE</spring.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <spring.version>6.0.12</spring.version>
     </properties>
 
     <dependencyManagement>

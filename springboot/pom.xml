@@ -15,7 +15,6 @@
 	<description>study springboot</description>
 	<properties>
 		<java.version>11</java.version>
-		<ignite.version>2.10.0</ignite.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -23,33 +22,14 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.6.14</version>
 		</dependency>
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.9.2</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.9.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.ignite</groupId>
-			<artifactId>ignite-core</artifactId>
-			<version>${ignite.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.ignite</groupId>
-			<artifactId>ignite-rest-http</artifactId>
-			<version>${ignite.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.9.2</version>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-webmvc-core</artifactId>
+			<version>1.6.14</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
