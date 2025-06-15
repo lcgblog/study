@@ -1,0 +1,68 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version "$springBootVersion"
+    id 'io.spring.dependency-management' version "$springPluginVersion"
+    id 'io.freefair.lombok' version "$lombokPluginVersion"
+}
+
+group = 'com.lcgblog'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+// 设置编码为UTF-8
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Test) {
+    systemProperty 'file.encoding', 'UTF-8'
+    // 修复JaCoCo在中文路径下的乱码问题
+    jvmArgs '-Dfile.encoding=UTF-8'
+}
+
+repositories {
+    // 阿里云 Maven 镜像，在中国速度最快
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+    maven { url 'https://maven.aliyun.com/repository/central' }
+    // 备用中央仓库
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion"
+    runtimeOnly "mysql:mysql-connector-java:$mysqlDriverVersion"
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// 配置所有BootRun类型的任务
+tasks.withType(org.springframework.boot.gradle.tasks.run.BootRun) {
+    mainClass = 'com.lcgblog.study.springboot.SpringbootApplication'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+tasks.named('bootRun') {
+    group = 'other'
+}
+
+tasks.named('bootTestRun') {
+    group = 'other'
+}
+
+tasks.register('startWithJdbcProfile', org.springframework.boot.gradle.tasks.run.BootRun) {
+    group = 'application'
+    systemProperty 'spring.profiles.active', 'jdbc'
+}

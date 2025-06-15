@@ -1,6 +1,6 @@
 server.port: 8080
-springdoc.swagger-ui.path: /
-springdoc.packagesToScan: com.lcgblog.study.springboot.controller
 
-
+springdoc:
+  swagger-ui:
+    path: /
 
