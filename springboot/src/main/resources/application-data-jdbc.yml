@@ -1,0 +1,9 @@
+lcgblog.study.data.jdbc:
+  active: true
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.2.91:3306/pizza_shop?useSSL=false&serverTimezone=UTC
+    username: lcgblog
+    password: lcgblog123
+    driver-class-name: com.mysql.cj.jdbc.Driver

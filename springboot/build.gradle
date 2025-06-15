@@ -35,7 +35,8 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    compileOnly 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
     implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:$springdocVersion"
     runtimeOnly "mysql:mysql-connector-java:$mysqlDriverVersion"
 
@@ -65,4 +66,9 @@ tasks.named('bootTestRun') {
 tasks.register('startWithJdbcProfile', org.springframework.boot.gradle.tasks.run.BootRun) {
     group = 'application'
     systemProperty 'spring.profiles.active', 'jdbc'
+}
+
+tasks.register('startWithDataJdbcProfile', org.springframework.boot.gradle.tasks.run.BootRun) {
+    group = 'application'
+    systemProperty 'spring.profiles.active', 'data-jdbc'
 }
