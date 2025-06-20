@@ -1,13 +1,15 @@
 package com.lcgblog.study.springboot.domain.entity;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-
-import org.springframework.beans.BeanUtils;
-
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Version;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Entity(name = "register_user")
 @Data

@@ -1,23 +1,22 @@
 package com.lcgblog.study.springboot.service.jpa;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.List;
-import java.util.Map;
-
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.stereotype.Service;
-
 import com.lcgblog.study.springboot.domain.entity.User;
 import com.lcgblog.study.springboot.domain.entity.UserEntity;
 import com.lcgblog.study.springboot.domain.mapper.UserMapper;
 import com.lcgblog.study.springboot.repository.jpa.UserJpaRepository;
 import com.lcgblog.study.springboot.service.UserServiceI;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.List;
+import java.util.Map;
 
 @Service
-@ConditionalOnBean(UserJpaRepository.class)
+@ConditionalOnProperty(prefix = "lcgblog.study.data.jpa", name = "active", havingValue = "true")
 @Slf4j
 public class UserServiceJpaImpl implements UserServiceI {
 

@@ -6,13 +6,14 @@ import com.lcgblog.study.springboot.domain.mapper.UserMapper;
 import com.lcgblog.study.springboot.repository.data.UserRepository;
 import com.lcgblog.study.springboot.service.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @ConditionalOnProperty(prefix = "lcgblog.study.data.jdbc", name = "active", havingValue = "true")

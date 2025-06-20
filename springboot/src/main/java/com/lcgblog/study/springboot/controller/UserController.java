@@ -4,7 +4,6 @@ import com.lcgblog.study.springboot.domain.dto.CommonResponse;
 import com.lcgblog.study.springboot.domain.entity.User;
 import com.lcgblog.study.springboot.domain.error.ServiceException;
 import com.lcgblog.study.springboot.service.UserServiceI;
-import com.lcgblog.study.springboot.service.jdbc.UserServiceJdbcImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
