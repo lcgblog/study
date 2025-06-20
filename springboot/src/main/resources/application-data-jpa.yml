@@ -1,4 +1,4 @@
-lcgblog.study.data.jdbc:
+lcgblog.study.data.jpa:
   active: true
 
 spring:

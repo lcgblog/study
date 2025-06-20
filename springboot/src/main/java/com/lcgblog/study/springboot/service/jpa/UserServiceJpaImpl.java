@@ -1,0 +1,62 @@
+package com.lcgblog.study.springboot.service.jpa;
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.List;
+import java.util.Map;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.stereotype.Service;
+
+import com.lcgblog.study.springboot.domain.entity.User;
+import com.lcgblog.study.springboot.domain.entity.UserEntity;
+import com.lcgblog.study.springboot.domain.mapper.UserMapper;
+import com.lcgblog.study.springboot.repository.jpa.UserJpaRepository;
+import com.lcgblog.study.springboot.service.UserServiceI;
+
+@Service
+@ConditionalOnBean(UserJpaRepository.class)
+@Slf4j
+public class UserServiceJpaImpl implements UserServiceI {
+
+    @Autowired
+    private UserJpaRepository userJpaRepository;
+    @Autowired
+    private UserMapper userMapper;
+
+    @Override
+    public void registerUser(User user) {
+        UserEntity userEntity = UserEntity.convert(user);
+        log.info("register user:{}", userEntity);
+        userJpaRepository.save(userEntity);
+        userJpaRepository.flush();
+    }
+
+    @Override
+    public void deleteUser(long id) {
+        userJpaRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateUserComment(long id, String comment) {
+        LocalDateTime now = LocalDateTime.now(ZoneId.of("UTC"));
+        userJpaRepository.updateById(id, comment, now);
+    }
+
+    @Override
+    public List<Map<String, Object>> listUsers() {
+        return
+                userJpaRepository.findAll()
+                        .stream()
+                        .map(UserEntity::convert)
+                        .map(userMapper.dtoMapper).
+                        toList();
+    }
+
+    @Override
+    public User getUser(long id) {
+        return UserEntity.convert(userJpaRepository.findById(id).orElse(null));
+    }
+}

@@ -6,6 +6,7 @@ import com.lcgblog.study.springboot.domain.mapper.UserMapper;
 import com.lcgblog.study.springboot.repository.data.UserRepository;
 import com.lcgblog.study.springboot.service.UserServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
