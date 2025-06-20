@@ -1,9 +1,6 @@
 package com.lcgblog.study.springboot.domain.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Version;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -17,6 +14,7 @@ import java.time.ZoneId;
 public class UserEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String username;
     private String password;
@@ -36,6 +34,7 @@ public class UserEntity {
         UserEntity userEntity = new UserEntity();
         BeanUtils.copyProperties(user, userEntity);
         LocalDateTime now = LocalDateTime.now(ZoneId.of("UTC"));
+        userEntity.setId(null);
         userEntity.setCreatedTime(now);
         userEntity.setLastLoginTime(now);
         userEntity.setUpdatedTime(now);

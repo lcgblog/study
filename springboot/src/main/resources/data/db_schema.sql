@@ -7,7 +7,7 @@ show databases;
 
 create table register_user
 (
-    id              bigint primary key auto_increment,
+    id              bigint primary key,
     username        varchar(20) unique not null,
     password        varchar(30)        not null,
     comment         varchar(50),
