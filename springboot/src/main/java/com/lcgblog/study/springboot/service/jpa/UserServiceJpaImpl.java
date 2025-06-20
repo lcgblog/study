@@ -5,6 +5,7 @@ import com.lcgblog.study.springboot.domain.entity.UserEntity;
 import com.lcgblog.study.springboot.domain.mapper.UserMapper;
 import com.lcgblog.study.springboot.repository.jpa.UserJpaRepository;
 import com.lcgblog.study.springboot.service.UserServiceI;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -38,10 +39,16 @@ public class UserServiceJpaImpl implements UserServiceI {
         userJpaRepository.deleteById(id);
     }
 
+    @Transactional
     @Override
     public void updateUserComment(long id, String comment) {
         LocalDateTime now = LocalDateTime.now(ZoneId.of("UTC"));
-        userJpaRepository.updateById(id, comment, now);
+        userJpaRepository.findById(id).ifPresent(user -> {
+            user.setComment(comment);
+            user.setUpdatedTime(now);
+            userJpaRepository.save(user);
+        });
+        userJpaRepository.flush();
     }
 
     @Override

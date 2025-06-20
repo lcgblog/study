@@ -1,0 +1,9 @@
+lcgblog.study.data.jpa:
+  active: true
+
+spring:
+  datasource:
+    url: jdbc:mysql://mysql2.sqlpub.com:3307/pizza_shop
+    username: pizzashop
+    password: oprExVnD72WVUtYH
+    driver-class-name: com.mysql.cj.jdbc.Driver
